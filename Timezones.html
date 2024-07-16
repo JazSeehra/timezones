@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Zones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .timezone {
+            margin: 20px 0;
+        }
+        .time {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="timezone">
+        <h2>Eastern Standard Time (EST)</h2>
+        <div class="time" id="est-time"></div>
+    </div>
+    <div class="timezone">
+        <h2>Central Standard Time (CST)</h2>
+        <div class="time" id="cst-time"></div>
+    </div>
+    <div class="timezone">
+        <h2>Mountain Standard Time (MST)</h2>
+        <div class="time" id="mst-time"></div>
+    </div>
+    <div class="timezone">
+        <h2>Pacific Standard Time (PST)</h2>
+        <div class="time" id="pst-time"></div>
+    </div>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            
+            const estTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+            document.getElementById('est-time').textContent = estTime.toLocaleTimeString();
+            
+            const cstTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+            document.getElementById('cst-time').textContent = cstTime.toLocaleTimeString();
+            
+            const mstTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Denver' }));
+            document.getElementById('mst-time').textContent = mstTime.toLocaleTimeString();
+            
+            const pstTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+            document.getElementById('pst-time').textContent = pstTime.toLocaleTimeString();
+        }
+        
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
